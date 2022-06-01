@@ -1,0 +1,49 @@
+{% extends "paginas/base.html" %}
+
+{% block titulo %} Lista de Usuarios {% endblock %}
+
+{% block Contenido %} 
+
+
+<div class="card">
+    <div class="card-header">
+        Listar Usuarios
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Usuarios</h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for Datos in datos %}
+                <tr>
+                    <td>{{ Datos.ID }}</td>
+                    <td>{{ Datos.Nombre }}</td>
+                    <td>{{ Datos.Apellido }}</td>
+                    <td>{{ Datos.Correo }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editar' Datos.ID%}" role="button">Editar</a>
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' Datos.ID %}" role="boutton">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

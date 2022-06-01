@@ -1,0 +1,43 @@
+{% extends "paginas/base.html" %}
+
+{% block titulo %} Formulario agregar datos {% endblock %}
+
+{% block Contenido %} 
+<div class="card">
+    <div class="card-header">
+        Crear Registro
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de usuario</h4>
+        <form enctype="multipart/form-data" method="post"> 
+            {% csrf_token %}
+            {% for campo in formulario %}
+            <div class="mb-3">
+                <label for="" class="form-label">{{ campo.label }}</label>
+        
+                <input
+                type="{{ campo.field.widget.imput_type }}"
+                calss="form-control"
+                name="{{ campo.name }}"
+                id=""
+                aria-describedby="helpId"
+                placeholder="{{ campo.label }}"
+                value="{{ campo.value | default:'' }}"
+                 />
+                
+                
+            </div>
+            <div class="col-12 help-text"> {{campo.errors}} </div>
+            
+        {% endfor %}
+        <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+        </form>
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+
+{% endblock %}
